@@ -1,0 +1,45 @@
+.sidedrawer {
+  width: 70%;
+  background: #fff;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  transform: translateX(-100%);
+  transition: all 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.sidedrawer.show {
+  transform: translateX(0);
+}
+
+.sidedrawer > ul {
+  list-style: none;
+}
+.topListItem {
+  margin-bottom: 8px;
+}
+
+.Icons {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+.topIcon {
+  font-size: 20px;
+  color: #444;
+  cursor: pointer;
+}
+
+@media (min-width: 960px) {
+  .sidedrawer {
+    display: none;
+  }
+}
