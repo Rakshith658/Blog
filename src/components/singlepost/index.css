@@ -1,0 +1,141 @@
+.singlepost {
+  flex: 9;
+}
+
+.singlepostWrapper {
+  padding: 20px;
+}
+
+.singlepostimg {
+  width: 100%;
+  height: 300px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.singlepostTitle {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 25px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.singlepostEdit {
+  width: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.singlePostIcon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.singlePostIcon:first-child {
+  color: teal;
+}
+.singlePostIcon:last-child {
+  color: tomato;
+}
+
+.singlepostinfo {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.singlepostAuthor {
+  font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.singlepostDate {
+  font-family: "Lora", serif;
+  font-style: italic;
+  font-size: 15px;
+  cursor: pointer;
+  color: rgb(156, 156, 156);
+}
+.singlepostDesc {
+  font-family: "Varela Round", Arial, Helvetica, sans-serif;
+  color: rgb(138, 131, 131);
+  line-height: 25px;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.singlepostDesc::first-letter {
+  margin-left: 15px;
+  font-weight: 600;
+  font-size: 40px;
+  color: #000;
+}
+
+@media (min-width: 960px) {
+  .singlepostEdit {
+    width: 20%;
+    margin-left: 10px;
+  }
+
+  .singlepostAuthor {
+    font-size: 20px;
+  }
+
+  .singlepostDate {
+    font-size: 15px;
+  }
+
+  .singlepostDesc::first-letter {
+    font-size: 30px;
+  }
+  .singlepostTitle {
+    font-size: 30px;
+  }
+  .singlepostimg {
+    height: 250px;
+  }
+}
+@media (max-width: 800px) {
+  .singlepostinfo {
+    width: 80%;
+  }
+  .singlepostEdit {
+    width: 20%;
+    margin-left: 10px;
+  }
+  .singlepostTitle {
+    font-size: 27px;
+  }
+  .singlepostimg {
+    height: 200px;
+  }
+}
+@media (max-width: 550px) {
+  .singlepostinfo {
+    width: 100%;
+  }
+
+  .singlepostAuthor {
+    font-size: 15px;
+  }
+
+  .singlepostDate {
+    font-size: 9px;
+  }
+  .singlepostDesc::first-letter {
+    font-size: 25px;
+  }
+  .singlepostTitle {
+    font-size: 20px;
+  }
+  .singlepostimg {
+    height: 160px;
+  }
+}

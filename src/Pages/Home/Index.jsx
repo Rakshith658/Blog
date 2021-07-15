@@ -3,7 +3,7 @@ import "./index.css";
 
 import Header from "../../components/Header/Index";
 import Sidebar from "../../components/Sidebar/Index";
-import Post from "../../components/post/Index";
+import Post from "../../components/posts/Index";
 
 const Index = () => {
   return (

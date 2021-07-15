@@ -75,7 +75,7 @@
 }
 
 .hamburger__menu:hover > div {
-  background-color: #dd219e;
+  background-color: rgb(92, 88, 88);
 }
 
 @media (max-width: 960px) {

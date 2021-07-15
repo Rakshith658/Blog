@@ -1,0 +1,108 @@
+.write {
+  padding-top: 50px;
+}
+.writeimg {
+  margin-left: 150px;
+  width: 70vw;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.writeform {
+  position: relative;
+}
+.writeformgroup {
+  margin-left: 10%;
+  display: flex;
+  align-items: center;
+}
+
+.writeIcon {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: gray;
+  cursor: pointer;
+}
+
+.writeinput {
+  border: none;
+  padding: 20px;
+  font-size: 30px;
+  width: 70vw;
+}
+
+.writeinput:focus {
+  outline: none;
+}
+
+.writeText {
+  font-size: 20px;
+}
+
+.writesubmit {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  background: rgb(8, 139, 111);
+  font-size: 20px;
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+@media (max-width: 666px) {
+  .writeimg {
+    margin-left: 100px;
+    height: 175px;
+  }
+
+  .writesubmit {
+    padding: 10px;
+    font-size: 15px;
+  }
+  .writeText {
+    font-size: 15px;
+  }
+  .writeinput {
+    padding: 15px;
+    font-size: 22px;
+  }
+  .writeIcon {
+    width: 20px;
+    height: 20px;
+    font-size: 16px;
+  }
+}
+@media (max-width: 480px) {
+  .writeimg {
+    margin-left: 50px;
+    height: 130px;
+  }
+
+  .writesubmit {
+    padding: 7px;
+    font-size: 10px;
+  }
+  .writeText {
+    font-size: 5px;
+  }
+  .writeinput {
+    padding: 13px;
+    font-size: 13px;
+  }
+
+  .writeIcon {
+    width: 17px;
+    height: 17px;
+    font-size: 13px;
+  }
+}
