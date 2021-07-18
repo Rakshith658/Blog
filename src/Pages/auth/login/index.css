@@ -1,0 +1,92 @@
+.login {
+  height: calc(100vh - 50px);
+  width: 100%;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://images.pexels.com/photos/768473/pexels-photo-768473.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+  background-size: cover;
+}
+
+.loginTitle {
+  font-size: 35px;
+  font-weight: bold;
+  color: black;
+}
+
+.loginform {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginform > label {
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+.loginform > input {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  font-size: 20px;
+  margin-top: 5px;
+  border-radius: 20px;
+}
+
+.loginform > input:focus {
+  outline: none;
+}
+
+.loginsubmit {
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(56, 146, 56);
+  color: #fff;
+  cursor: pointer;
+  margin-top: 15px;
+  align-self: center;
+}
+
+.registersubmit {
+  position: absolute;
+  top: 10%;
+  right: 6%;
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(75, 75, 190);
+  color: #fff;
+  cursor: pointer;
+  margin-top: 15px;
+  align-self: center;
+}
+
+.loginsubmit:hover {
+  background-color: rgb(13, 139, 13);
+}
+
+@media (max-width: 400px) {
+  .loginTitle {
+    font-size: 25px;
+  }
+  .loginform > label {
+    font-size: 20px;
+  }
+  .loginform > input {
+    font-size: 15px;
+  }
+
+  .registersubmit,
+  .loginsubmit {
+    font-size: 17px;
+  }
+}

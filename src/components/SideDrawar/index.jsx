@@ -1,7 +1,8 @@
 import React from "react";
 import "./styles.css";
+import { Link } from "react-router-dom";
 
-const Index = ({ show, click }) => {
+const Index = ({ show, click, user }) => {
   const sideDrawerClass = ["sidedrawer"];
   if (show) {
     sideDrawerClass.push("show");
@@ -21,11 +22,20 @@ const Index = ({ show, click }) => {
         <li className="topListItem">
           <i class=" fab fa-twitter-square"></i>
         </li>
-        <li className="topListItem">HOME</li>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <li className="topListItem">HOME</li>
+        </Link>
         <li className="topListItem">ABOUT</li>
         <li className="topListItem">CONTACT</li>
-        <li className="topListItem">WRITE</li>
-        <li className="topListItem">LOGOUT</li>
+        <Link to="/write" style={{ textDecoration: "none" }}>
+          <li className="topListItem">WRITE</li>
+        </Link>
+        <Link to="/login" style={{ textDecoration: "none" }}>
+          <li className="topListItem">{user ? "LOGOUT" : "LOGIN"}</li>
+        </Link>
+        <Link to="/register" style={{ textDecoration: "none" }}>
+          <li className="topListItem">{!user && "Register"}</li>
+        </Link>
       </ul>
     </div>
   );

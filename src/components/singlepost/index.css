@@ -4,6 +4,7 @@
 
 .singlepostWrapper {
   padding: 20px;
+  padding-right: 20px;
 }
 
 .singlepostimg {
@@ -92,6 +93,10 @@
     font-size: 15px;
   }
 
+  .singlepostDesc {
+    font-size: 13px;
+  }
+
   .singlepostDesc::first-letter {
     font-size: 30px;
   }
@@ -113,6 +118,9 @@
   .singlepostTitle {
     font-size: 27px;
   }
+  .singlepostDesc {
+    font-size: 11px;
+  }
   .singlepostimg {
     height: 200px;
   }
@@ -127,6 +135,9 @@
   }
 
   .singlepostDate {
+    font-size: 9px;
+  }
+  .singlepostDesc {
     font-size: 9px;
   }
   .singlepostDesc::first-letter {

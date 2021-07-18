@@ -1,34 +1,37 @@
 import React from "react";
 import "./index.css";
+import { Link } from "react-router-dom";
 
 const Index = () => {
   return (
-    <div className="post">
-      <img
-        className="postImg"
-        src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-        alt=""
-      />
-      <div className="postinfo">
-        <div className="postcats">
-          <span className="postcat">Music</span>
-          <span className="postcat">Life</span>
+    <Link to="/single/1" style={{ textDecoration: "none", color: "#000" }}>
+      <div className="post">
+        <img
+          className="postImg"
+          src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+          alt=""
+        />
+        <div className="postinfo">
+          <div className="postcats">
+            <span className="postcat">Music</span>
+            <span className="postcat">Life</span>
+          </div>
+          <span className="posttitle">Rakshith Kumar s </span>
+          <hr />
+          <span className="postDate">1 hour ago</span>
         </div>
-        <span className="posttitle">Rakshith Kumar s </span>
-        <hr />
-        <span className="postDate">1 hour ago</span>
+        <p className="postDesc">
+          How to create a blog website using React.js. Blog app React project
+          from scratch for beginners. Design React blog app using functional
+          React components and React Router Dom. How to create a blog website
+          using React.js. Blog app React project from scratch for beginners.
+          Design React blog app using functional React components and React
+          Router Dom. How to create a blog website using React.js. Blog app
+          React project from scratch for beginners. Design React blog app using
+          functional React components and React Router Dom.
+        </p>
       </div>
-      <p className="postDesc">
-        How to create a blog website using React.js. Blog app React project from
-        scratch for beginners. Design React blog app using functional React
-        components and React Router Dom. How to create a blog website using
-        React.js. Blog app React project from scratch for beginners. Design
-        React blog app using functional React components and React Router Dom.
-        How to create a blog website using React.js. Blog app React project from
-        scratch for beginners. Design React blog app using functional React
-        components and React Router Dom.
-      </p>
-    </div>
+    </Link>
   );
 };
 

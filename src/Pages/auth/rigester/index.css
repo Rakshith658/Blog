@@ -1,0 +1,92 @@
+.Register {
+  height: calc(100vh - 50px);
+  width: 100%;
+  right: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://images.pexels.com/photos/317355/pexels-photo-317355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-size: cover;
+}
+
+.RegisterTitle {
+  font-size: 35px;
+  font-weight: bold;
+  color: black;
+}
+
+.Registerform {
+  display: flex;
+  flex-direction: column;
+}
+
+.Registerform > label {
+  font-size: 25px;
+  margin-top: 20px;
+}
+
+.Registerform > input {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  font-size: 20px;
+  margin-top: 5px;
+  border-radius: 20px;
+}
+
+.Registerform > input:focus {
+  outline: none;
+}
+
+.Registersubmit {
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(56, 146, 56);
+  color: #fff;
+  cursor: pointer;
+  margin-top: 15px;
+  align-self: center;
+}
+
+.Loginsubmit {
+  position: absolute;
+  top: 10%;
+  right: 6%;
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(75, 75, 190);
+  color: #fff;
+  cursor: pointer;
+  margin-top: 15px;
+  align-self: center;
+}
+
+.Registersubmit:hover {
+  background-color: rgb(13, 139, 13);
+}
+
+@media (max-width: 400px) {
+  .RegisterTitle {
+    font-size: 25px;
+  }
+  .Registerform > label {
+    font-size: 20px;
+  }
+  .Registerform > input {
+    font-size: 15px;
+  }
+
+  .Loginsubmit,
+  .Registersubmit {
+    font-size: 17px;
+  }
+}
