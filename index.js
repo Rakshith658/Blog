@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const mongoose = require("mongoose");
 const AuthRouter = require("./router/auth");
 const UserRouter = require("./router/users");
+const PostRouter = require("./router/post");
 
 env.config();
 
@@ -28,9 +29,7 @@ app.use(helmet());
 
 app.use("/auth", AuthRouter);
 app.use("/user", UserRouter);
-app.get("/", (req, res) => {
-  res.status(200).send("Rakshith");
-});
+app.use("/post", PostRouter);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
