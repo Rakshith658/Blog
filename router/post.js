@@ -19,12 +19,25 @@ router.post("/", async (req, res) => {
   }
 });
 
-//get post
+//get posts
 
 router.get("/", async (req, res) => {
+  const username = req.query.user;
+  const catName = req.query.catName;
   try {
-    const posts = await Post.find({});
-    res.status(200).json(posts);
+    let posts;
+    if (username) {
+      posts = await Post.find({ username });
+      res.status(200).json(posts);
+    } else if (catName) {
+      //working with array in to diffrent ways
+      // posts = await Post.find({ category:catName});
+      posts = await Post.find({ category: { $in: [catName] } });
+      res.status(200).json(posts);
+    } else {
+      posts = await Post.find({});
+      res.status(200).json(posts);
+    }
   } catch (error) {
     console.log(error);
   }
@@ -44,19 +57,24 @@ router.get("/:id", async (req, res) => {
 // update post
 
 router.put("/:id", async (req, res) => {
-  if (req.body.userid === req.params.id) {
-    try {
-      const updatepost = await Post.findByIdAndUpdate(
-        req.params.id,
-        { $set: req.body },
-        { new: true }
-      );
-      res.status(200).json(updatepost);
-    } catch (error) {
-      console.log(error);
+  try {
+    const post = await Post.findById(req.params.id);
+    if (req.body.username === post.username) {
+      try {
+        const updatepost = await Post.findByIdAndUpdate(
+          req.params.id,
+          { $set: req.body },
+          { new: true }
+        );
+        res.status(200).json(updatepost);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      res.status(401).json("you can update only your post");
     }
-  } else {
-    res.status(401).json("you can update only your post");
+  } catch (error) {
+    console.log(error);
   }
 });
 
@@ -64,8 +82,17 @@ router.put("/:id", async (req, res) => {
 
 router.delete("/:id", async (req, res) => {
   try {
-    await Post.findByIdAndDelete(req.params.id);
-    res.status(200).json("post deleted successfully");
+    const post = await Post.findById(req.params.id);
+    if (req.body.username === post.username) {
+      try {
+        await Post.findByIdAndDelete(req.params.id);
+        res.status(200).json("post deleted successfully");
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      res.status(401).json("you can onely delete your post");
+    }
   } catch (error) {
     console.log(error);
   }
