@@ -57,6 +57,19 @@
   cursor: pointer;
 }
 
+.settingsPPIconimg {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: lightcoral;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
 .settingform > label {
   font-size: 20px;
   margin-top: 20px;

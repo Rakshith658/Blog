@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./index.css";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const Index = () => {
+  const [cat, setcat] = useState([]);
+  useEffect(() => {
+    const fetchcat = async () => {
+      const Cat = await axios.get("/category");
+      setcat(Cat.data);
+    };
+    fetchcat();
+  }, []);
   return (
     <div className="sidebar">
       <div className="sidebaritem">
@@ -21,10 +31,11 @@ const Index = () => {
       <div className="sidebaritem">
         <span className="sidebartitle">CATOGARIES</span>
         <ul className="sidebarlist">
-          <li className="sidebarlistItem">life</li>
-          <li className="sidebarlistItem">Music</li>
-          <li className="sidebarlistItem">style</li>
-          <li className="sidebarlistItem">sport</li>
+          {cat.map((c) => (
+            <Link to={`/?catName=${c.name}`} key={c._id}>
+              <li className="sidebarlistItem">{c.name}</li>
+            </Link>
+          ))}
         </ul>
       </div>
       <div className="sidebaritem">

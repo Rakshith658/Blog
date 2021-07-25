@@ -1,52 +1,114 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { Logincontext } from "../../context/context";
 import "./index.css";
+import axios from "axios";
 
-const Index = () => {
+const Index = ({ post }) => {
+  const { user } = useContext(Logincontext);
+
+  const [title, settitle] = useState("");
+  const [desc, setdesc] = useState("");
+  const [updatemood, setupdatemood] = useState(false);
+
+  const PF = "http://localhost:5050/images/";
+  const deletepost = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.delete(`/post/${post._id}`, {
+        data: { username: user.username },
+      });
+      window.location.replace("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const uppost = () => {
+    setupdatemood(true);
+    setdesc(post.desc);
+    settitle(post.title);
+  };
+  const UpDate = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.put(`/post/${post._id}`, { ...post, desc, title });
+      window.location.reload();
+      setupdatemood(false);
+      setdesc("");
+      settitle("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <div className="singlepost">
       <div className="singlepostWrapper">
-        <img
-          className="singlepostimg"
-          src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-          alt=""
-        />
+        {post.photo && (
+          <img
+            className="singlepostimg"
+            src={PF + post.photo || post.photo}
+            alt=""
+          />
+        )}
+
         <span className="singlepostTitle">
-          Rakshith Kumar s
+          {(updatemood && (
+            <input
+              type="text"
+              placeholder="Title"
+              className="singleinput"
+              autoFocus={true}
+              value={title}
+              onChange={(e) => settitle(e.target.value)}
+            />
+          )) ||
+            post.title}
           <div className="singlepostEdit">
-            <i className="singlePostIcon far fa-edit"></i>
-            <i className="singlePostIcon far fa-trash-alt"></i>
+            {user?.username === post.username && (
+              <div>
+                {updatemood && (
+                  <button
+                    className="singlesubmit"
+                    type="button"
+                    onClick={UpDate}
+                  >
+                    UpDate
+                  </button>
+                )}
+                <i className="singlePostIcon far fa-edit" onClick={uppost}></i>
+                <i
+                  className="singlePostIcon far fa-trash-alt"
+                  onClick={deletepost}
+                ></i>
+              </div>
+            )}
           </div>
         </span>
         <div className="singlepostinfo">
           <span className="singlepostAuthor">
-            Author: <b>Rakshith kumar s</b>
+            Author :
+            <Link
+              to={`/?username=${post.username}`}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <b> {post.username}</b>
+            </Link>
           </span>
-          <span className="singlepostDate">1 hour ago</span>
+          <span className="singlepostDate">
+            {new Date(post.createdAt).toDateString()}
+          </span>
         </div>
         <p className="singlepostDesc">
-          How to create a blog website using React.js. Blog app React project
-          from scratch for beginners. Design React blog app using functional
-          React components and React Router Dom. How to create a blog website
-          using React.js. Blog app React project from scratch for beginners.
-          Design React blog app using functional React components and React
-          Router Dom. How to create a blog website using React.js. Blog app
-          React project from scratch for beginners. Design React blog app using
-          functional React components and React Router Dom. How to create a blog
-          website using React.js. Blog app React project from scratch for
-          beginners. Design React blog app using functional React components and
-          React Router Dom. How to create a blog website using React.js. Blog
-          app React project from scratch for beginners. Design React blog app
-          using functional React components and React Router Dom. How to create
-          a blog website using React.js. Blog app React project from scratch for
-          beginners. Design React blog app using functional React components and
-          React Router Dom. How to create a blog website using React.js. Blog
-          app React project from scratch for beginners. Design React blog app
-          using functional React components and React Router Dom. How to create
-          a blog website using React.js. Blog app React project from scratch for
-          beginners. Design React blog app using functional React components and
-          React Router Dom. How to create a blog website using React.js. Blog
-          app React project from scratch for beginners. Design React blog app
-          using functional React components and React Router Dom.
+          {(updatemood && (
+            <textarea
+              type="text"
+              className="singleinput singleText"
+              placeholder="Please tell your Story......"
+              value={desc}
+              onChange={(e) => setdesc(e.target.value)}
+            ></textarea>
+          )) ||
+            post.desc}
         </p>
       </div>
     </div>

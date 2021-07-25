@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
+import { Logincontext } from "../../context/context";
 
 const Index = ({ click, user }) => {
+  const { dispatch } = useContext(Logincontext);
+  const PF = "http://localhost:5050/images/";
+  const logout = () => {
+    dispatch({ type: "LOG_OUT" });
+  };
   return (
     <div className="top">
       <div className="topLeft">
@@ -27,18 +33,18 @@ const Index = ({ click, user }) => {
             <li className="topListItem">WRITE</li>
           </Link>
           <Link to="/login" style={{ textDecoration: "none" }}>
-            <li className="topListItem">{user && "LOGOUT"}</li>
+            <li className="topListItem" onClick={logout}>
+              {user && "LOGOUT"}
+            </li>
           </Link>
         </ul>
       </div>
       <div className="topRight">
         {user ? (
           <Link to="/setting">
-            <img
-              className="topimg"
-              src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-              alt=""
-            />
+            {(user.profilePic && (
+              <img className="topimg" src={PF + user.profilePic} alt="" />
+            )) || <i className="topPPIcon far fa-user-circle"></i>}
           </Link>
         ) : (
           <ul className="topList">

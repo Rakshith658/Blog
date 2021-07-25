@@ -2,36 +2,35 @@ import React from "react";
 import "./index.css";
 import { Link } from "react-router-dom";
 
-const Index = () => {
+const Index = ({ post }) => {
+  const PF = "http://localhost:5050/images/";
   return (
-    <Link to="/single/1" style={{ textDecoration: "none", color: "#000" }}>
-      <div className="post">
-        <img
-          className="postImg"
-          src="https://images.pexels.com/photos/6685428/pexels-photo-6685428.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-          alt=""
-        />
-        <div className="postinfo">
-          <div className="postcats">
-            <span className="postcat">Music</span>
-            <span className="postcat">Life</span>
-          </div>
-          <span className="posttitle">Rakshith Kumar s </span>
-          <hr />
-          <span className="postDate">1 hour ago</span>
+    <div className="post">
+      {post.photo && (
+        <img className="postImg" src={PF + post.photo || post.photo} alt="" />
+      )}
+
+      <div className="postinfo">
+        <div className="postcats">
+          {post.category.map((c) => (
+            <span className="postcat" key={post._id}>
+              {c}
+            </span>
+          ))}
         </div>
-        <p className="postDesc">
-          How to create a blog website using React.js. Blog app React project
-          from scratch for beginners. Design React blog app using functional
-          React components and React Router Dom. How to create a blog website
-          using React.js. Blog app React project from scratch for beginners.
-          Design React blog app using functional React components and React
-          Router Dom. How to create a blog website using React.js. Blog app
-          React project from scratch for beginners. Design React blog app using
-          functional React components and React Router Dom.
-        </p>
+        <Link
+          to={`/single/${post._id}`}
+          style={{ textDecoration: "none", color: "#000" }}
+        >
+          <span className="posttitle">{post.title}</span>
+        </Link>
+        <hr />
+        <span className="postDate">
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
-    </Link>
+      <p className="postDesc">{post.desc}</p>
+    </div>
   );
 };
 

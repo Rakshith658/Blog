@@ -9,12 +9,14 @@ import Setting from "./Pages/setting/Index";
 import Rigester from "./Pages/auth/rigester/Index";
 import Login from "./Pages/auth/login/Index";
 
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Logincontext } from "./context/context";
 
 function App() {
   const [toglle, settoglle] = useState(false);
-  const user = true;
+  const { user } = useContext(Logincontext);
+
   return (
     <Router>
       <div className="App">

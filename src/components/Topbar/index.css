@@ -58,6 +58,19 @@
   margin-left: 15px;
 }
 
+.topPPIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: lightcoral;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
 .hamburger__menu {
   width: 30px;
   height: 30px;
