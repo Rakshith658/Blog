@@ -33,17 +33,10 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
   if (req.body.userId === req.params.id) {
     const User = await Auth.findById(req.body.userId);
-    const validpassword = await bcrypt.compare(
-      req.body.password,
-      User.password
-    );
-    if (validpassword) {
-      await Post.deleteMany({ username: User.username });
-      await Auth.findByIdAndDelete(req.body.userId);
-      res.status(200).json("User Deleted successfully");
-    } else {
-      res.status(404).json("the password doesn't matchs");
-    }
+
+    await Post.deleteMany({ username: User.username });
+    await Auth.findByIdAndDelete(req.body.userId);
+    res.status(200).json("User Deleted successfully");
   } else {
     res.status(401).json("you can onely delete your account");
   }

@@ -18,7 +18,8 @@ router.post("/register", async (req, res) => {
     const { password, ...others } = User._doc;
     res.status(200).json(others);
   } catch (error) {
-    console.log(error);
+    res.status(500).json(error);
+    // console.log(error);
   }
 });
 

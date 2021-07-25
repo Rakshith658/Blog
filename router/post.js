@@ -22,7 +22,7 @@ router.post("/", async (req, res) => {
 //get posts
 
 router.get("/", async (req, res) => {
-  const username = req.query.user;
+  const username = req.query.username;
   const catName = req.query.catName;
   try {
     let posts;
